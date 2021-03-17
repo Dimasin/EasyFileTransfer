@@ -65,25 +65,27 @@ namespace EasyFileTransfer
                         case 101:
                             //download++;
                             break;
-                        case 125:
+                        case 125: //Запрос от клиента на начало передачи
                             {
                                 fs = new FileStream(@"" + SaveTo + Encoding.UTF8.GetString(recv_data), FileMode.CreateNew);
+                                //Разрешаем клиенту передавать 126
                                 byte[] data_to_send = CreateDataPacket(Encoding.UTF8.GetBytes("126"), Encoding.UTF8.GetBytes(Convert.ToString(current_file_pointer)));
                                 ns.Write(data_to_send, 0, data_to_send.Length);
                                 ns.Flush();
                             }
                             break;
-                        case 127:
+                        case 127: //Идет передача
                             {
                                 fs.Seek(current_file_pointer, SeekOrigin.Begin);
                                 fs.Write(recv_data, 0, recv_data.Length);
                                 current_file_pointer = fs.Position;
+                                //Разрешаем клиенту передавать 126
                                 byte[] data_to_send = CreateDataPacket(Encoding.UTF8.GetBytes("126"), Encoding.UTF8.GetBytes(Convert.ToString(current_file_pointer)));
                                 ns.Write(data_to_send, 0, data_to_send.Length);
                                 ns.Flush();
                             }
                             break;
-                        case 128:
+                        case 128: //Клиент закончил передачу
                             {
                                 fs.Close();
                                 loop_break = true;

@@ -4,3 +4,9 @@ D:\C#\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.csprojAssembl
 D:\C#\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.dll
 D:\C#\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.pdb
 D:\C#\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.csproj.CopyComplete
+D:\main\progr\csrc\EasyFileTransfer\EasyFileTransfer\bin\Debug\EasyFileTransfer.dll
+D:\main\progr\csrc\EasyFileTransfer\EasyFileTransfer\bin\Debug\EasyFileTransfer.pdb
+D:\main\progr\csrc\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.csprojAssemblyReference.cache
+D:\main\progr\csrc\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.csproj.CoreCompileInputs.cache
+D:\main\progr\csrc\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.dll
+D:\main\progr\csrc\EasyFileTransfer\EasyFileTransfer\obj\Debug\EasyFileTransfer.pdb

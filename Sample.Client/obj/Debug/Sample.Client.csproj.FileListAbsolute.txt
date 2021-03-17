@@ -9,3 +9,16 @@ D:\C#\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.csproj.GenerateReso
 D:\C#\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.csproj.CopyComplete
 D:\C#\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.exe
 D:\C#\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.pdb
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\bin\Debug\Sample.Client.exe.config
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\bin\Debug\Sample.Client.exe
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\bin\Debug\Sample.Client.pdb
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\bin\Debug\EasyFileTransfer.dll
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\bin\Debug\EasyFileTransfer.pdb
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.csprojAssemblyReference.cache
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.Form1.resources
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.Properties.Resources.resources
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.csproj.GenerateResource.cache
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.csproj.CoreCompileInputs.cache
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.csproj.CopyComplete
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.exe
+D:\main\progr\csrc\EasyFileTransfer\Sample.Client\obj\Debug\Sample.Client.pdb

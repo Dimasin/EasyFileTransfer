@@ -32,15 +32,18 @@ namespace EasyFileTransfer
                 FileStream fs = new FileStream(Selected_file, FileMode.Open);
                 TcpClient tc = new TcpClient(TargetIP, Port);
                 NetworkStream ns = tc.GetStream();
+                //Отправляем серверу команду 125 - запрос на передачу
                 byte[] data_tosend = CreateDataPacket(Encoding.UTF8.GetBytes("125"), Encoding.UTF8.GetBytes(File_name));
                 ns.Write(data_tosend, 0, data_tosend.Length);
                 ns.Flush();
                 bool loop_break = false;
                 while (true)
                 {
+                    //Ждем от сервера команду 126 - начало передачи
                     if (ns.ReadByte() == 2)
                     {
                         byte[] cmd_buffer = new byte[3];
+                        //Получаем от сервера команду 126 - начало передачи
                         ns.Read(cmd_buffer, 0, cmd_buffer.Length);
                         byte[] recv_data = ReadStream(ns);
                         switch (Convert.ToInt32(Encoding.UTF8.GetString(cmd_buffer)))
@@ -53,6 +56,7 @@ namespace EasyFileTransfer
                                     int temp_buffer_length = (int)(fs.Length - recv_file_pointer < 20000 ? fs.Length - recv_file_pointer : 20000);
                                     byte[] temp_buffer = new byte[temp_buffer_length];
                                     fs.Read(temp_buffer, 0, temp_buffer.Length);
+                                    //Отправляем серверу команду 127 - передача
                                     byte[] data_to_send = CreateDataPacket(Encoding.UTF8.GetBytes("127"), temp_buffer);
                                     ns.Write(data_to_send, 0, data_to_send.Length);
                                     ns.Flush();
@@ -60,6 +64,7 @@ namespace EasyFileTransfer
                                 }
                                 else
                                 {
+                                    //Отправляем серверу команду 128 - конец передачи
                                     byte[] data_to_send = CreateDataPacket(Encoding.UTF8.GetBytes("128"), Encoding.UTF8.GetBytes("Close"));
                                     ns.Write(data_to_send, 0, data_to_send.Length);
                                     ns.Flush();
