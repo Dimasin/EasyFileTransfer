@@ -28,6 +28,7 @@ namespace EasyFileTransfer
             try
             {
                 string Selected_file = FilePath;
+                long CheckCRC = 0;
                 string File_name = Path.GetFileName(Selected_file);
                 FileStream fs = new FileStream(Selected_file, FileMode.Open);
                 TcpClient tc = new TcpClient(TargetIP, Port);
@@ -67,10 +68,15 @@ namespace EasyFileTransfer
                                     //Отправляем серверу команду 128 - конец передачи
                                     byte[] data_to_send = CreateDataPacket(Encoding.UTF8.GetBytes("128"), Encoding.UTF8.GetBytes("Close"));
                                     ns.Write(data_to_send, 0, data_to_send.Length);
-                                    ns.Flush();
+                                    //ns.Flush();
                                     fs.Close();
-                                    loop_break = true;
+                                    //loop_break = true;
                                 }
+                                break;
+                            case 129:
+                                CheckCRC = long.Parse(Encoding.UTF8.GetString(recv_data));
+                                ns.Flush();
+                                loop_break = true;
                                 break;
                             default:
                                 break;
@@ -79,14 +85,28 @@ namespace EasyFileTransfer
                     if (loop_break == true)
                     {
                         ns.Close();
-                        return new Response { status = 1, description = "send successfully."};
+                        Response rsp = new Response();
+                        rsp.status = CheckCRC;
+                        switch (CheckCRC)
+                        {
+                            case 1:
+                                rsp.description = "OK";
+                                break;
+                            case 2:
+                                rsp.description = "CRC error";
+                                break;
+                        default:
+                                rsp.description = "Transfer error";
+                                break;
+                        }
+                        return rsp;
                     }
 
                 }
             }
             catch (Exception e)
             {
-                return new Response { status = -1, description = "Error: " + e.Message};
+                return new Response { status = 0, description = "Error: " + e.Message};
             }
         }
 

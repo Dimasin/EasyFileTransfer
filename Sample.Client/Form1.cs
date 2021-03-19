@@ -38,10 +38,7 @@ namespace Sample.Client
             EasyFileTransfer.Model.Response rsp = EftClient.Send(fn, textBox2.Text, Convert.ToInt32(textBox1.Text));
             timer1.Stop();
             progressBar1.BeginInvoke((MethodInvoker)(() => progressBar1.Value = 100));
-            if (rsp.status == 1)
-            {
-                MessageBox.Show("send successfully.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            MessageBox.Show(rsp.description, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             progressBar1.BeginInvoke((MethodInvoker)(() => progressBar1.Value = 0));
         }
 

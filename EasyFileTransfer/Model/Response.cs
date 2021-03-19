@@ -8,7 +8,7 @@ namespace EasyFileTransfer.Model
 {
     public class Response
     {
-        public int status { get; set; }
+        public long status { get; set; }
         public string description { get; set; }
     }
 }

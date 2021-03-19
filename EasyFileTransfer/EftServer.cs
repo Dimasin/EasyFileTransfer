@@ -41,6 +41,12 @@ namespace EasyFileTransfer
     {
         NetworkStream ns;
         string SaveTo;
+
+        long CheckCRCFile()
+        {
+            return 0;
+        }
+
         public SocketHandler(TcpClient tc, string SaveTo)
         {
             this.SaveTo = SaveTo;
@@ -88,6 +94,11 @@ namespace EasyFileTransfer
                         case 128: //Клиент закончил передачу
                             {
                                 fs.Close();
+                                long result = CheckCRCFile();
+                                //Отправляем клиенту результат проверки контрольной суммы файла
+                                byte[] data_to_send = CreateDataPacket(Encoding.UTF8.GetBytes("129"), Encoding.UTF8.GetBytes(Convert.ToString(result)));
+                                ns.Write(data_to_send, 0, data_to_send.Length);
+                                ns.Flush();
                                 loop_break = true;
                             }
                             break;
